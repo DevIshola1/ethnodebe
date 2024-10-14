@@ -46,16 +46,16 @@ app.get("/", (req, res) => {
 
 require("./app/routes/user.routes")(app);
 
-// Schedule the function to run every 24 hours
-// cron.schedule('0 0 * * *', () => {
-//   console.log('Running daily profit update...');
-//   updateUserProfits();
-// });
-
-cron.schedule('*/5 * * * *', () => {
-  console.log('Running profit update every 5 minutes...');
+//Schedule the function to run every 24 hours
+cron.schedule('0 0 * * *', () => {
+  console.log('Running daily profit update...');
   updateUserProfits();
 });
+
+// cron.schedule('*/5 * * * *', () => {
+//   console.log('Running profit update every 5 minutes...');
+//   updateUserProfits();
+// });
 
 
 // set port, listen for requests
