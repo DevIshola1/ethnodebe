@@ -9,11 +9,11 @@ const userRoutes = require('./app/routes/user.routes'); // Import user routes
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:3000"
+  origin: "http://dashboard.mine88.info"
 };
 
-// app.use(cors(corsOptions)); to limit cors
-app.use(cors());
+ app.use(cors(corsOptions));// to limit cors
+//app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(express.json());
