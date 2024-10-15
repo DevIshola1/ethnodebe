@@ -8,10 +8,25 @@ const userRoutes = require('./app/routes/user.routes'); // Import user routes
 
 const app = express();
 
-var corsOptions = {
-  origin: ["https://ethnodefe.vercel.app/", "dashboard.mine88.info"]
-};
 
+// Define CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow multiple specific origins
+    const allowedOrigins = ['https://ethnodefe.vercel.app', 'https://dashboard.mine88.info'];
+
+    // If the request's origin is in the allowedOrigins list or if it's not provided (e.g., for same-origin requests)
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  credentials: true, // Allow cookies and credentials in requests
+  optionsSuccessStatus: 200 // Some legacy browsers choke on 204 responses, so return 200
+};
  app.use(cors(corsOptions));// to limit cors
 //app.use(cors());
 
