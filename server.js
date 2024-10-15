@@ -9,7 +9,7 @@ const userRoutes = require('./app/routes/user.routes'); // Import user routes
 const app = express();
 
 var corsOptions = {
-  origin: "http://dashboard.mine88.info"
+  origin: ["https://ethnodefe.vercel.app/", "dashboard.mine88.info"]
 };
 
  app.use(cors(corsOptions));// to limit cors
