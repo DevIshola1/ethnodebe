@@ -27,6 +27,7 @@ const corsOptions = {
   credentials: true, // Allow cookies and credentials in requests
   optionsSuccessStatus: 200 // Some legacy browsers choke on 204 responses, so return 200
 };
+
  app.use(cors(corsOptions));// to limit cors
 //app.use(cors());
 
